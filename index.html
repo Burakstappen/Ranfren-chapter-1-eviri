@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 1</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#111;
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    width:500px;
+    text-align:center;
+}
+
+h1{
+    margin-bottom:25px;
+}
+
+.bar{
+    width:100%;
+    height:22px;
+    background:#333;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.fill{
+    width:0%;
+    height:100%;
+    background:#00c853;
+}
+
+#percent{
+    margin-top:20px;
+    font-size:22px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Chapter 1 Yükleniyor...</h1>
+
+    <div class="bar">
+        <div class="fill" id="fill"></div>
+    </div>
+
+    <div id="percent">0%</div>
+</div>
+
+<script>
+let progress = 0;
+
+const fill = document.getElementById("fill");
+const percent = document.getElementById("percent");
+
+const timer = setInterval(() => {
+
+    progress++;
+
+    if(progress > 100) progress = 100;
+
+    fill.style.width = progress + "%";
+    percent.innerText = progress + "%";
+
+},100);
+
+setTimeout(() => {
+
+    clearInterval(timer);
+
+    document.body.innerHTML = `
+        <div style="
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            flex-direction:column;
+            height:100vh;
+            text-align:center;
+            font-family:Arial;
+        ">
+            <h1 id="text" style="font-size:60px;">😂 APTAL MALL PUAHAHHAHHA!</h1>
+        </div>
+    `;
+
+    const text = document.getElementById("text");
+
+    const messages = [
+        "📖 GERÇEK SANDIN PUAAHADAHDAKDS.",
+        "🍫 Önce Popkek.",
+        "🌐 Sonra ÇEVİRİ c=3."
+    ];
+
+    let i = 0;
+
+    const change = setInterval(() => {
+
+        if(i >= messages.length){
+            clearInterval(change);
+            return;
+        }
+
+        text.innerHTML = messages[i];
+        i++;
+
+    },1500);
+
+},10000);
+</script>
+
+</body>
+</html>
